@@ -9,11 +9,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Show repo files
-        run: ls -la
-
-      - name: Basic test step
-        run: echo "GitHub Actions is working!"
+      - name: test-case
+        run: echo "Hello World"
