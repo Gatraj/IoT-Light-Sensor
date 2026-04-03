@@ -52,6 +52,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+
           TAG="${{ steps.version.outputs.next_tag }}"
 
           if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
@@ -62,9 +63,12 @@ jobs:
           fi
 
       - name: Create release with generated notes
+        env:
+          GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
+
           TAG="${{ steps.version.outputs.next_tag }}"
 
           if gh release view "$TAG" >/dev/null 2>&1; then
